@@ -42,17 +42,6 @@ def calcola_media_anno(libri: list[dict]) -> float:
     return somma / len(libri)
     
 
-
-
-
-
-
-
-
-
-
-
-
 def main() -> None:
     libri = [
     {"titolo": "Il piccolo principe", "genere": "Romanzo", "anno": 1943},
@@ -69,7 +58,5 @@ def main() -> None:
         libri = filtra_per_genere(libri_caricati, "libri")
     media = calcola_media_anno(libri_caricati)
     print(f"Media anno di pubblicazione: {media:.1f}")
-
-
 
 main()
