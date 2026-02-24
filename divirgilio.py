@@ -21,7 +21,7 @@ def carica_biblioteca(nome_file: str) -> list[dict]:
         return []
 
 def filtra_per_genere(libri: list[dict], genere: str) -> list[dict]:
-    genere = input("Genere: ").strip()
+    genere = str(input("Genere: ")).strip()
     if not genere:
         print("Genere non può essere vuoto.")
         return
@@ -29,19 +29,18 @@ def filtra_per_genere(libri: list[dict], genere: str) -> list[dict]:
     for i in libri:
         if genere in libri:
             risultati.append(i)
-
     
+    
+    print(f"Libri di {genere}")
+    for l in libri:
+        print(f"-{l["titolo"]}")
 
-
-
-
-
-
-
-
-
-
-
+def calcola_media_anno(libri: list[dict]) -> float:
+    if not libri:
+        return 0.0
+    somma = sum(libro["anno"] for libro in libri)
+    return somma / len(libri)
+    
 
 
 
@@ -66,13 +65,11 @@ def main() -> None:
     salva_biblioteca(libri, nome_file)
     libri_caricati = carica_biblioteca(nome_file)
     
-    
-    genere = str(input("Inserisci il genere da trovare: ")) 
     if libri_caricati:
         libri = filtra_per_genere(libri_caricati, "libri")
-        print(f"Libri di {genere}")
-        print(f"")
-        
-    
+    media = calcola_media_anno(libri_caricati)
+    print(f"Media anno di pubblicazione: {media:.1f}")
+
+
 
 main()
