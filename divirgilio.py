@@ -21,13 +21,16 @@ def carica_biblioteca(nome_file: str) -> list[dict]:
         return []
 
 def filtra_per_genere(libri: list[dict], genere: str) -> list[dict]:
-    filtrati = []
-    for libro in libri:
-        if libro ["genere"] == genere:
-            filtrati.append(libro)
-    return filtrati
+    genere = input("Genere: ").strip()
+    if not genere:
+        print("Genere non può essere vuoto.")
+        return
+    risultati = []
+    for i in libri:
+        if genere in libri:
+            risultati.append(i)
 
-
+    
 
 
 
@@ -62,10 +65,14 @@ def main() -> None:
     nome_file = "biblioteca.json"
     salva_biblioteca(libri, nome_file)
     libri_caricati = carica_biblioteca(nome_file)
-    filtra = filtra_per_genere(libri_caricati, genere: str)
-    print(f"Libri di {filtra}")
-    print(libri('anno'))
-    print(libri('titolo'))
+    
+    
+    genere = str(input("Inserisci il genere da trovare: ")) 
+    if libri_caricati:
+        libri = filtra_per_genere(libri_caricati, "libri")
+        print(f"Libri di {genere}")
+        print(f"")
+        
     
 
 main()
